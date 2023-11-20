@@ -1,0 +1,54 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - Chào bạn
+    - Xin chào
+    - Greetings
+    - What's up?
+    - Howdy
+    - Hey there
+    - Hi, how are you?
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - Tạm biệt
+    - See you later
+    - Farewell
+    - Ciao
+    - Adios
+    - Tạm biệt nhé
+    - Until we meet again
+    - Take care
+
+- intent: help
+  examples: |
+    - Bạn giúp tôi được không?
+    - Tôi cần bạn giúp đỡ?
+    - Help me, please
+    - Can you assist me?
+    - I need some help
+    - Tôi có thể nhờ bạn giúp đỡ được không?
+    - Assistance required
+    - Help, I'm stuck
+    - Có thể bạn giúp tôi với vấn đề này không?
+    - I'm in a bit of a bind, can you help?
+
+- intent: bot_challenge
+  examples: |
+    - Bạn là ai?
+    - Bạn là sinh năm bao nhiêu?
+    - What is your identity?
+    - Tell me more about yourself
+    - Bạn có tên là gì?
+    - How old are you?
+    - What's your name?
+    - Introduce yourself
+    - Are you a human or a bot?
+    - Where do you come from?

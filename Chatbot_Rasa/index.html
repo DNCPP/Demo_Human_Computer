@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #chat-container {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #chat-header {
+            background-color: #0084FF;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #chat-messages {
+            height: 200px;
+            width: 280px;
+            padding: 10px;
+            max-height: 300px;
+            overflow-y: scroll; /* Đặt thanh cuộn ở bên phải */
+            direction: ltr; /* Đảm bảo nội dung hiển thị bên phải */
+            text-align: left;
+            word-wrap: break-word;
+        }
+        
+        #userInput {
+            width: 93%;
+            padding: 10px;
+            border: none;
+            border-top: 1px solid #ccc;
+            float: right; /* Đặt để hiển thị bên phải */
+        }
+
+        #sendMessage {
+            width: 100%;
+            background-color: #0084FF;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            float: right; /* Đặt để hiển thị bên phải */
+        }
+        #chat-messages div {
+            clear: both; /* Đảm bảo các phần tử trong #chat-messages không chồng lên nhau */
+        }
+        #sendMessage:hover {
+            background-color: #0052D1;
+        }
+        #chat-container {
+          margin-right: 10px;
+          position: fixed;
+          bottom: 0;
+          right: 0;
+          width: 300px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-header">
+            <h1>Chatbot</h1>
+        </div>
+        <div id="chat-messages">
+            <!-- Chat messages will be displayed here -->
+        </div>
+        <input type="text" id="userInput" placeholder="Nhập tin nhắn..." style="float: right;" />
+        <button id="sendMessage" style="float: right;">Gửi</button>
+    </div>
+
+    <script>
+      const chatbox = document.getElementById("chat-messages"); // Đổi "chatbox" thành "chat-messages"
+      const userInput = document.getElementById("userInput");
+      const sendMessageButton = document.getElementById("sendMessage");
+  
+      sendMessageButton.addEventListener("click", () => {
+          const userMessage = userInput.value;
+          displayUserMessage(userMessage);
+          sendUserMessageToChatbot(userMessage);
+          userInput.value = "";
+      });
+  
+      function displayUserMessage(message) {
+          const userMessageElement = document.createElement("div");
+          userMessageElement.textContent = "You: " + message;
+          chatbox.appendChild(userMessageElement);
+      }
+  
+      function displayChatbotMessage(message) {
+          const chatbotMessageElement = document.createElement("div");
+          chatbotMessageElement.textContent = "Chatbot: " + message;
+          chatbox.appendChild(chatbotMessageElement);
+      }
+  
+      function sendUserMessageToChatbot(message) {
+          const requestData = {
+              sender: "user",
+              message: message
+          };
+  
+          fetch('http://localhost:5005/webhooks/rest/webhook', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(requestData),
+          })
+          .then(response => response.json())
+          .then(data => {
+              const chatbotResponse = data[0].text;
+              displayChatbotMessage(chatbotResponse);
+          })
+          .catch(error => {
+              console.error('Error sending message to Rasa:', error);
+          });
+      }
+      userInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") { // Kiểm tra nếu phím được bấm là "Enter"
+            event.preventDefault(); // Ngăn ngừng mặc định của "Enter" (ngăn xuống dòng)
+            const userMessage = userInput.value;
+            displayUserMessage(userMessage);
+            sendUserMessageToChatbot(userMessage);
+            userInput.value = "";
+        }
+    });
+    
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,61 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - help
+  - bot_challenge
+
+responses:
+  utter_greet:
+  - text: "Chào bạn"
+  - text: "Tôi là chatbot của Công ty Du lịch mạo hiểm. Bạn có thể hỏi tôi để tôi tư vấn giúp bạn"
+  - text: "Xin chào! Có điều gì tôi có thể giúp bạn hôm nay?"
+  - text: "Hello! Tôi ở đây để hỗ trợ bạn. Bạn cần gì?"
+  - text: "Hi there! Chào mừng bạn đến với dịch vụ của chúng tôi."
+  - text: "Chào bạn! Bạn có câu hỏi nào cần tôi giải đáp không?"
+  - text: "Hiện tại là thời điểm tốt để bạn đặt câu hỏi. Tôi sẽ cố gắng giúp bạn nhé."
+  - text: "Chào! Bạn đang tìm kiếm thông tin gì hôm nay?"
+  - text: "Chào bạn! Tôi ở đây để hỗ trợ mọi thắc mắc của bạn."
+  - text: "Xin chào! Tôi có thể làm gì để giúp bạn?"
+
+  utter_help:
+  - text: "Được, tôi có thể giúp gì cho bạn?"
+  - text: "Tôi sẽ cố gắng hết sức để giúp bạn. Bạn cần tôi làm gì?"
+  - text: "Tôi ở đây để hỗ trợ bạn. Bạn muốn biết điều gì?"
+  - text: "Có vẻ bạn cần một chút giúp đỡ. Hãy nói cho tôi biết bạn cần gì."
+  - text: "Tôi có thể cung cấp thông tin hoặc hỗ trợ bạn với vấn đề nào đó. Bạn chỉ cần nói lên ý của mình."
+  - text: "Chắc chắn! Hãy nói cho tôi biết bạn đang gặp vấn đề gì."
+  - text: "Bạn cần sự hỗ trợ của tôi? Hãy nói cho tôi biết bạn cần gì."
+  - text: "Tôi sẽ cố gắng giúp bạn nhất có thể. Hãy nói cho tôi biết vấn đề của bạn."
+  - text: "Bạn có thể yên tâm, tôi sẽ hỗ trợ bạn. Hãy nói cho tôi biết bạn cần gì."
+  - text: "Có vấn đề gì mà tôi có thể giúp bạn giải quyết không?"
+
+  utter_goodbye:
+  - text: "Tạm biệt, hẹn gặp lại bạn"
+  - text: "Hẹn gặp lại! Nếu có thêm câu hỏi, đừng ngần ngại liên hệ."
+  - text: "Chào tạm biệt! Hy vọng sớm gặp lại bạn."
+  - text: "Tạm biệt nhé! Nếu cần thêm sự hỗ trợ, đừng ngần ngại liên hệ lại."
+  - text: "Hẹn gặp lại bạn sau! Nếu có điều gì cần tôi giúp đỡ, đừng ngần ngại liên hệ."
+  - text: "Chào tạm biệt! Hy vọng bạn có một ngày tuyệt vời."
+  - text: "Tạm biệt nhé! Nếu có bất cứ thắc mắc nào sau này, đừng ngần ngại hỏi tôi."
+  - text: "Chúc bạn một ngày tốt lành! Hẹn gặp lại bạn."
+  - text: "Hẹn gặp lại sau nhé! Nếu cần thêm giúp đỡ, đừng ngần ngại liên hệ."
+  - text: "Tạm biệt! Nếu có bất kỳ câu hỏi nào khác, hãy để lại cho tôi biết."
+
+  utter_iamabot:
+  - text: "Tôi là bot"
+  - text: "Đúng vậy, tôi là một chatbot được tạo để hỗ trợ bạn."
+  - text: "Mình chỉ là một chương trình máy tính, nhưng tôi sẽ cố gắng giúp bạn như mình có thể."
+  - text: "Tôi không phải con người, nhưng tôi sẽ cố gắng trả lời câu hỏi của bạn một cách tốt nhất có thể."
+  - text: "Không có gì đặc biệt về tôi, chỉ là một bot đơn giản."
+  - text: "Đúng vậy, tôi không có cảm xúc và chỉ có thể trả lời các câu hỏi dựa trên thông tin đã được lập trình."
+  - text: "Tôi là một chương trình trí tuệ nhân tạo. Bạn có thể hỏi tôi bất cứ điều gì."
+  - text: "Tôi là bot chat thông minh được thiết kế để hỗ trợ trong việc cung cấp thông tin và giải đáp thắc mắc của bạn."
+  - text: "Mình chỉ là một chương trình máy tính, nhưng tôi sẽ cố gắng giúp bạn một cách hiệu quả nhất."
+  - text: "Đúng vậy, tôi là bot. Có điều gì bạn muốn tôi giúp đỡ không
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
